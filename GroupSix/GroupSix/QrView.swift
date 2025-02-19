@@ -14,84 +14,90 @@
 import SwiftUI
 
 struct QRView: View {
+    var showQRCode: Bool
+    
     var body: some View {
-        VStack(spacing: 20) {
+        
+        VStack {
+            HStack{
+                Circle()
+                    .fill(Color.blue)
+                    .frame(width:40, height:40)
+                Text("Manula Rathnayake")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                Spacer()
+                
+            }
+            .padding()
+            
+            Text("Scan QR code")
+                .font(.title2)
+                .bold()
+                
+                .padding(.bottom,10)
             Spacer()
             
-            // Logo
-            Image("logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300, height: 170)
-                
-            // Username and Password Fields
-            TextField("Enter Username", text: .constant(""))
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
-            
-            SecureField("Enter Password", text: .constant(""))
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
-            
-            // Login Button
-            Button(action: {
-                print("Login tapped")
-            }) {
-                Text("LOGIN")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-            }
-            
-            // OR separator
-            HStack {
+            ZStack{
                 Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal)
+                    .fill(Color.black)
+                    .frame(width: 400, height:500)
+                    .cornerRadius(10)
                 
-                Text("OR")
-                    .foregroundColor(.gray)
-                
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal)
-            }
-            
-            // Guest Mode Button
-            Button(action: {
-                print("Guest Mode tapped")
-            }) {
-                Text("GUEST MODE")
-                    .font(.headline)
-                    .foregroundColor(.blue)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.blue, lineWidth: 2)
-                    )
-                    .padding(.horizontal)
+                if showQRCode {
+                    Image(systemName: "qrcode")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:200, height:200)
+                        .foregroundColor(.white)
+                } else{
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: 200, height: 200)
+                        .cornerRadius(10)
+                    
+                }
             }
             
             Spacer()
+            
+            HStack{
+                Image(systemName: "map.fill")
+                Spacer()
+                Image(systemName: "clock.fill")
+                Spacer()
+                Image(systemName: "bell.fill")
+                Spacer()
+                Image(systemName: "person.fill")
+                Spacer()
+            }
+            
+            .padding()
+            .font(.system(size: 25))
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .background(Color.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
         }
-        .padding()
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
+            
+           
+struct contentView1: View {
+    var body: some View {
+        QRView(showQRCode: false)
     }
 }
 
-struct QRView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
+struct contentView2: View {
+    var body: some View {
+        QRView(showQRCode: true)
     }
 }
+
+#Preview {
+    contentView1()
+}
+    
 
