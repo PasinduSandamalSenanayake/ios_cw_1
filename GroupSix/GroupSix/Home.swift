@@ -35,7 +35,7 @@ struct CustomNavBar: View {
         HStack {
             NavBarItem(icon: "location.fill", title: "Home", tab: 0, selectedTab: $selectedTab)
             Spacer()
-            NavBarItem(icon: "clock", title: "Time", tab: 1, selectedTab: $selectedTab)
+            NavBarItem(icon: "clock", title: "Live Udates", tab: 1, selectedTab: $selectedTab)
             Spacer()
             NavBarItem(icon: "bell.fill", title: "Alerts", tab: 2, selectedTab: $selectedTab)
             Spacer()
