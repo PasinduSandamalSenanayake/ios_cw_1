@@ -9,7 +9,6 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Header Section
                 ZStack {
 
                 RoundedRectangle (cornerRadius: 0)
@@ -35,34 +34,33 @@ struct LoginView: View {
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.gray, lineWidth: 1) // Border for clarity
+                        .stroke(Color.gray, lineWidth: 1)
                         .frame(height: 50)
 
                     TextField("Enter Username", text: $username)
-                        .padding(.horizontal, 15) // Adds left & right padding inside
+                        .padding(.horizontal, 15)
                         .font(.system(size: 18))
                 }
                 .padding(.horizontal) // External padding
 
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.gray, lineWidth: 1) // Border for clarity
+                        .stroke(Color.gray, lineWidth: 1)
                         .frame(height: 50)
 
                     SecureField("Enter Password", text: $password)
-                        .padding(.horizontal, 15) // Adds left & right padding inside
+                        .padding(.horizontal, 15)
                         .font(.system(size: 18))
                 }
-                .padding(.horizontal) // External padding
+                .padding(.horizontal)
                 .padding(.bottom, 20)
 
 
                 
-                // Sign In Button
+                
                 Button(action: {
-                    // Handle sign-in action
                 }) {
-                    Text("Sign In")
+                    Text("SIGN IN")
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.primaryBlue)
@@ -71,8 +69,6 @@ struct LoginView: View {
                         .fontWeight(.bold)
                 }
                 .padding(.horizontal)
-
-                // OR Divider
                 HStack {
                     Rectangle()
                         .frame(height: 1)
@@ -86,17 +82,17 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
 
-                // Guest Mode Button
+                
                 Button(action: {
                     isGuestModeActive = true
                 }) {
                     Text("GUEST MODE")
-                        .foregroundColor(Color.primaryBlue) // Change text color
+                        .foregroundColor(Color.primaryBlue)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color.primaryBlue, lineWidth: 2) // Keeps border color same
+                                .stroke(Color.primaryBlue, lineWidth: 2)
                         )
                 }
                 .padding(.horizontal)
@@ -105,7 +101,7 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                // Create Account Link
+                
                 VStack(alignment: .center) {
                     Text("New around here?")
                     

@@ -3,7 +3,7 @@ import SwiftUI
 struct IntroView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // Top Half (Blue Background with Image)
+            
             VStack {
                 Spacer()
                 Image("intro1")
@@ -16,7 +16,6 @@ struct IntroView: View {
             .frame(height: UIScreen.main.bounds.height * 0.45) // Adjusted height
             .background(Color.blue)
             
-            // Bottom Half (White Background with Rounded Corners)
             VStack(alignment: .leading, spacing: 15) {
                 Text("🎓 Students, Faculty & Staff")
                     .font(.headline)
@@ -51,7 +50,6 @@ struct IntroView: View {
                 }
                 .font(.footnote)
                 
-                // Start Button
                 Button(action: {
                     // Action for button
                 }) {

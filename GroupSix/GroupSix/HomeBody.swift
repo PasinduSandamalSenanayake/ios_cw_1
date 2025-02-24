@@ -16,31 +16,42 @@ struct HomeBody: View {
         ]
 
     var body: some View {
-        ScrollView { // Enables vertical scrolling
+        ScrollView {
             VStack(spacing: 10) {
-                // User Greeting & Notification Icon
                 HStack {
                     Circle()
                         .fill(Color.blue)
                         .frame(width: 40, height: 40)
+                        .overlay(
+                            Image("user")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                        )
 
                     VStack(alignment: .leading) {
                         Text("Good morning")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        Text("Sandamal Senanayake")
+                        Text("John Andrew")
                             .fontWeight(.bold)
                     }
 
                     Spacer()
-
+                    
                     Image(systemName: "bell.fill")
                         .foregroundColor(.blue)
                         .font(.title2)
                 }
                 .padding()
+                .background(Color.white)
+                .cornerRadius(15)
+                .shadow(radius: 5)
+                .padding(.horizontal)
 
-                // Faculty Picker
+
+                
                 Menu {
                     ForEach(faculties, id: \.self) { faculty in
                         Button(faculty) {
@@ -62,7 +73,7 @@ struct HomeBody: View {
                 }
                 .padding(.horizontal)
 
-                // Location Picker
+                
                 Menu {
                     ForEach(locations, id: \.self) { location in
                         Button(location) {
@@ -84,7 +95,7 @@ struct HomeBody: View {
                 }
                 .padding(.horizontal)
 
-                // Search Button
+                
                 Button(action: {
                     print("Search tapped")
                 }) {
@@ -93,13 +104,13 @@ struct HomeBody: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                        .background(Color.primaryBlue)
+                        .cornerRadius(20)
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 20)
 
-                // University Map Layout
+                
                 Image("map")
                     .resizable()
                     .aspectRatio(10/9, contentMode: .fit)
@@ -107,7 +118,7 @@ struct HomeBody: View {
                     .shadow(radius: 5)
                     .padding(.horizontal)
 
-                // Google Map Text and Icon
+                
                 HStack {
                     Image(systemName: "mappin.and.ellipse")
                         .foregroundColor(.blue)
@@ -146,7 +157,7 @@ struct HomeBody: View {
                     }
                     .padding(.horizontal)
 
-                    // Location Icon & Text
+                    
                     HStack {
                         Image(systemName: "mappin.circle.fill")
                             .foregroundColor(.blue)
@@ -173,14 +184,14 @@ struct HomeBody: View {
                                 .font(.body)
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading) // Align list to left
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal)
 
                                
                 Divider()
                                
-                                // About the University
+                            
                 Text("About the University")
                     .font(.headline)
                                
@@ -190,11 +201,6 @@ struct HomeBody: View {
                 .font(.body)
                 .foregroundColor(.gray)
                 .padding()
-                            
-                
-                
-                
-                // Google Map Image
                 
                 
                 
@@ -202,9 +208,9 @@ struct HomeBody: View {
             }
             .padding()
         }
+        .background(Color.lightGray)
     }
 
-    // Function to create buildings
     func buildingView(number: String, width: CGFloat = 80, height: CGFloat = 80) -> some View {
         Rectangle()
             .fill(Color.blue)

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab = 0  // Keeps track of selected tab
+    @State private var selectedTab = 0
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -27,7 +27,6 @@ struct HomeView: View {
     }
 }
 
-// ✅ Custom Bottom Navigation Bar
 struct CustomNavBar: View {
     @Binding var selectedTab: Int
 
@@ -47,7 +46,6 @@ struct CustomNavBar: View {
     }
 }
 
-// ✅ Navigation Bar Item Component
 struct NavBarItem: View {
     let icon: String
     let title: String
@@ -69,7 +67,6 @@ struct NavBarItem: View {
     }
 }
 
-// ✅ LogView (The Home Screen)
 struct LogView: View {
     var body: some View {
         NavigationView {
@@ -84,7 +81,6 @@ struct LogView: View {
     }
 }
 
-// ✅ Dummy Screens for Other Tabs
 struct SearchView: View {
     var body: some View {
         VStack {
@@ -121,7 +117,7 @@ struct ProfileView: View {
     }
 }
 
-// ✅ Preview
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
