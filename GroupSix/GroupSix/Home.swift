@@ -11,7 +11,7 @@ struct HomeView: View {
             SearchView()
                 .tag(1)
             
-            NotificationsView()
+            QRView()
                 .tag(2)
             
             ProfileView()
