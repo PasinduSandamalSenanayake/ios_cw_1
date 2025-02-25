@@ -43,6 +43,7 @@ struct CustomNavBar: View {
         .frame(height: 70)
         .padding(.horizontal, 30)
         .background(Color.white.shadow(radius: 5))
+        .navigationBarBackButtonHidden(true)
     }
 }
 

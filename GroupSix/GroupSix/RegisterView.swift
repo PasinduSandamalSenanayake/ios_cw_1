@@ -9,6 +9,7 @@ struct RegisterView: View {
     @State private var confirmPassword: String = ""
     @State private var isGuestModeActive = false
     @State private var isAccountCreationActive = false
+    @State private var isAccountCreated = false
     
     var body: some View {
         NavigationView {
@@ -110,31 +111,30 @@ struct RegisterView: View {
 
                 
                 // Sign In Button
-                Button(action: {
-                    // Handle sign-in action
-                }) {
-                    Text("Sign In")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.primaryBlue)
-                        .foregroundColor(.white)
-                        .cornerRadius(25)
-                        .fontWeight(.bold)
-                }
-                .padding(.horizontal)
+                NavigationLink(destination: HomeView(), isActive: $isAccountCreated) {
+                                    EmptyView()
+                                }
+
+                                // Sign In Button
+                                Button(action: {
+                                    isAccountCreated = true  // Trigger navigation
+                                }) {
+                                    Text("Sign In")
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.primaryBlue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(25)
+                                        .fontWeight(.bold)
+                                }
+                                .padding(.horizontal)
                 
                 Spacer()
 
-                
-
-                
-
-
-                
-                
-               
             }
+            
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -5,33 +5,34 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isGuestModeActive = false
     @State private var isAccountCreationActive = false
+    @State private var isUserActive = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 ZStack {
-
-                RoundedRectangle (cornerRadius: 0)
+                    RoundedRectangle(cornerRadius: 0)
                         .foregroundColor(Color.primaryBlue)
                         .rotationEffect(Angle(degrees: 15))
 
-                VStack {
-                    Text("Navigator")
-                        .font(.system(size: 36))
-                        .foregroundColor(Color.white)
-                        .bold()
+                    VStack {
+                        Text("Navigator")
+                            .font(.system(size: 36))
+                            .foregroundColor(Color.white)
+                            .bold()
 
-                    Text("Start to navigate")
-                        .font(.system(size: 24))
-                        .foregroundColor(Color.white)
+                        Text("Start to navigate")
+                            .font(.system(size: 24))
+                            .foregroundColor(Color.white)
                     }
-                .padding(.top, 30)
+                    .padding(.top, 30)
                 }
                 .frame(width: UIScreen.main.bounds.width * 3, height: 300)
                 .offset(y: -100)
-                
+
                 Spacer().frame(height: 30)
-                
+
+                // Username Field
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.gray, lineWidth: 1)
@@ -41,8 +42,9 @@ struct LoginView: View {
                         .padding(.horizontal, 15)
                         .font(.system(size: 18))
                 }
-                .padding(.horizontal) // External padding
+                .padding(.horizontal)
 
+                // Password Field
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.gray, lineWidth: 1)
@@ -55,10 +57,9 @@ struct LoginView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 20)
 
-
-                
-                
+                // Sign In Button
                 Button(action: {
+                    isUserActive = true
                 }) {
                     Text("SIGN IN")
                         .frame(maxWidth: .infinity)
@@ -69,6 +70,8 @@ struct LoginView: View {
                         .fontWeight(.bold)
                 }
                 .padding(.horizontal)
+
+                // OR Separator
                 HStack {
                     Rectangle()
                         .frame(height: 1)
@@ -82,7 +85,7 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
 
-                
+                // Guest Mode Button
                 Button(action: {
                     isGuestModeActive = true
                 }) {
@@ -97,11 +100,9 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
 
-
-                
                 Spacer()
-                
-                
+
+                // Create Account Section
                 VStack(alignment: .center) {
                     Text("New around here?")
                     
@@ -114,19 +115,21 @@ struct LoginView: View {
                     }
                 }
                 .padding(.bottom)
-
-                
-                // Navigation Links
-                NavigationLink(destination: Text("Guest Mode View"), isActive: $isGuestModeActive) {
-                    EmptyView()
-                }
-                NavigationLink(destination: Text("Account Creation View"), isActive: $isAccountCreationActive) {
-                    EmptyView()
-                }
+            }
+            // New Navigation Destination Handling (iOS 16+)
+            .navigationDestination(isPresented: $isGuestModeActive) {
+                HomeBody()
+            }
+            .navigationDestination(isPresented: $isAccountCreationActive) {
+                RegisterView()
+            }
+            .navigationDestination(isPresented: $isUserActive){
+                HomeView()
             }
         }
     }
 }
+
 
 #Preview {
     LoginView()

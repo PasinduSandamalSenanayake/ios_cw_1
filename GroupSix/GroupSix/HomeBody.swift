@@ -5,8 +5,8 @@ struct HomeBody: View {
     @State private var selectedLocation = "Select the location"
     @State private var isNavigating = false
 
-    let faculties = ["Engineering", "Science", "Business", "Medicine"]
-    let locations = ["Main Campus", "City Campus", "North Wing", "South Block"]
+    let faculties = ["Faculty of Engineering", "Faculty of Science", "Faculty of Business", "Faculty of Medicine"]
+    let locations = ["Cafeteria", "Hall 01", "Hall 12", "Hall 44"]
     
     let list_of_faculties = [
             "Faculty of Engineering",
