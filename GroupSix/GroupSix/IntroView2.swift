@@ -75,6 +75,7 @@ struct IntroView2: View {
             }
             .edgesIgnoringSafeArea(.all)
             .background(Color.primaryBlue)
+            .navigationBarHidden(true)
         }
     }
 }
