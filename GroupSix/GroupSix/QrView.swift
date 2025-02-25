@@ -14,7 +14,9 @@
 import SwiftUI
 
 struct QRView: View {
-    var showQRCode: Bool
+    @State private var showQRCode: Bool = false
+    @State private var showPopup : Bool = false
+    @State private var isDissmiss = false
     
     var body: some View {
         
@@ -25,7 +27,7 @@ struct QRView: View {
                     .frame(width:40, height:40)
                 Text("Manula Rathnayake")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.primaryBlue)
                 Spacer()
                 
             }
@@ -35,8 +37,11 @@ struct QRView: View {
                 .font(.title2)
                 .bold()
                 
-                .padding(.bottom,10)
-            Spacer()
+                .padding(.bottom,20)
+           
+            Text("Scan QR codes when entering and leaving the key areas to help others find free spaces and reward coins")
+                .padding(.bottom,25)
+            
             
             ZStack{
                 Rectangle()
@@ -50,54 +55,98 @@ struct QRView: View {
                         .scaledToFit()
                         .frame(width:200, height:200)
                         .foregroundColor(.white)
+                        .onTapGesture (count:2){
+                            showPopup = true
+                        }
                 } else{
                     Rectangle()
                         .fill(Color.gray.opacity(0.3))
                         .frame(width: 200, height: 200)
                         .cornerRadius(10)
+                        .onTapGesture(count:2) {
+                            withAnimation{
+                                showQRCode.toggle()
+                            }
+                             
+                            
+                        }
                     
                 }
             }
             
             Spacer()
             
-            HStack{
-                Image(systemName: "map.fill")
-                Spacer()
-                Image(systemName: "clock.fill")
-                Spacer()
-                Image(systemName: "bell.fill")
-                Spacer()
-                Image(systemName: "person.fill")
-                Spacer()
-            }
-            
-            .padding()
-            .font(.system(size: 25))
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+//            HStack{
+//                Image(systemName: "map.fill")
+//                Spacer()
+//                Image(systemName: "clock.fill")
+//                Spacer()
+//                Image(systemName: "bell.fill")
+//                Spacer()
+//                Image(systemName: "person.fill")
+//                Spacer()
+//            }
+//            
+//            .padding()
+//            .font(.system(size: 25))
+//            .foregroundColor(.white)
+//            .frame(maxWidth: .infinity)
+//            .background(Color.blue)
+//            .clipShape(RoundedRectangle(cornerRadius: 20))
         }
         .edgesIgnoringSafeArea(.bottom)
+        .overlay(
+            Group {
+                if showPopup{
+                    VStack{
+                        Text("Scan successfull")
+                            .font(.headline)
+                            .bold()
+                            .padding(.top,10)
+                        
+                        Text("Scan again when leaving the area to collect your 3 points!")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                       
+                        
+                        
+                        Button(action: {
+                            showPopup = false
+                        }) {
+                            Text("Dismiss")
+                                .foregroundColor(.primaryBlue)
+                                .bold()
+                                . padding(.top,10)
+                        }
+                    }
+                    .frame(width:300, height:150)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius:10)
+                    .transition(.scale)
+                    
+                }
+            }
+        )
     }
 }
             
            
-struct contentView1: View {
-    var body: some View {
-        QRView(showQRCode: false)
-    }
-}
-
-struct contentView2: View {
-    var body: some View {
-        QRView(showQRCode: true)
-    }
-}
+//struct contentView1: View {
+//    var body: some View {
+//        QRView(showQRCode: false)
+//    }
+//}
+//
+//struct contentView2: View {
+//    var body: some View {
+//        QRView(showQRCode: true)
+//    }
+//}
 
 #Preview {
-    contentView1()
+    QRView()
 }
     
 
