@@ -17,7 +17,7 @@ struct IntroView2: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: UIScreen.main.bounds.height * 0.45)
-                .background(Color.blue)
+                .background(Color.primaryBlue)
                 
                
                 VStack(alignment: .leading, spacing: 15) {
@@ -74,7 +74,7 @@ struct IntroView2: View {
                 .shadow(radius: 5)
             }
             .edgesIgnoringSafeArea(.all)
-            .background(Color.blue)
+            .background(Color.primaryBlue)
         }
     }
 }

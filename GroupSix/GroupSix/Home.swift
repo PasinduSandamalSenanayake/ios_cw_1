@@ -8,7 +8,7 @@ struct HomeView: View {
             HomeBody()
                 .tag(0)
             
-            SearchView()
+            LiveUpdatesView()
                 .tag(1)
             
             QRView()

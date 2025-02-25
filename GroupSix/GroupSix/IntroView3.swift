@@ -23,7 +23,7 @@ struct IntroView3: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: UIScreen.main.bounds.height * 0.45) // Adjusted height
-                .background(Color.blue)
+                .background(Color.primaryBlue)
                 
                 // Bottom Half (White Background with Rounded Corners)
                 VStack(alignment: .leading, spacing: 15) {
@@ -72,7 +72,7 @@ struct IntroView3: View {
                 .shadow(radius: 5)
             }
             .edgesIgnoringSafeArea(.all)
-            .background(Color.blue)
+            .background(Color.primaryBlue)
         }
     }
 }
