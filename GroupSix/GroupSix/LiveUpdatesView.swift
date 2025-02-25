@@ -10,6 +10,7 @@ import SwiftUI
 struct LiveUpdatesView : View {
     @State private var selectedFaculty : String? = nil
     @State private var selectedLocation : String? = nil
+    @State private var showLiveUpdates: Bool = false
     
     var body : some View {
         VStack{
@@ -48,42 +49,62 @@ struct LiveUpdatesView : View {
             } label: {
                 HStack {
                     Text(selectedFaculty ?? "Select the faculty")
+                        .foregroundColor(.black)
                     Spacer()
                     Image(systemName: "chevron.down")
+                        .foregroundColor(.gray)
                 }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
-            }
-            .padding(.horizontal)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
+                    }
+                    .padding(.horizontal)
+
             
             Menu {
                 Button("Cafeteria"){
                     selectedLocation = "Cafeteria"
                 }
-                Button("Faculty of Education"){
-                    selectedFaculty = "Faculty of Education"
+                Button("Library"){
+                    selectedLocation = "Library"
                 }
-                Button("Faculty of Science"){
-                    selectedFaculty = "Faculty of Science"
+                Button("Parking 01"){
+                    selectedLocation = "Parking 01"
                 }
-                Button("Faculty of Medicine"){
-                    selectedFaculty = "Faculty of Medicine"
+                Button("Parking 02"){
+                    selectedLocation = "Parking 02"
                 }
-                Button("Faculty of Computing"){
-                    selectedFaculty = "Faculty of Computing"
+                Button("PC Lab 05"){
+                    selectedLocation = "PC Lab 05"
+                }
+                Button("PC Lab 06"){
+                    selectedLocation = "PC Lab 06"
+                }
+                Button("PC Lab 10"){
+                    selectedLocation = "PC Lab 10"
+                }
+                Button("Study Area 01"){
+                    selectedLocation = "Study Area 01"
+                }
+                Button("Study Area 02"){
+                    selectedLocation = "Study Area 02"
                 }
             } label: {
                 HStack {
                     Text(selectedLocation ?? "Select the location")
+                        .foregroundColor(.black)
                     Spacer()
                     Image(systemName: "chevron.down")
+                        .foregroundColor(.gray)
                 }
                 .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 1)
             }
             .padding(.horizontal)
+
             
             if selectedFaculty == "Faculty of Engineering" && selectedLocation == "Cafeteria"{
                 LiveView()
@@ -99,48 +120,52 @@ struct LiveView : View {
     var body: some View{
         VStack(alignment: .leading){
             Text("Cafeteria")
-                .font(.title)
+                .font(.headline)
                 .bold()
+                
+           
             
             Text("GROUND FLOOR")
                 .foregroundColor(.primaryBlue)
+                .padding(.bottom,40)
             
             HStack {
                 Text("Free Space")
+                    .padding(.bottom,25)
                 Spacer()
                 Text("40")
                     .foregroundColor(.green)
+                    .bold()
+                    .padding(.bottom,25)
             }
             .padding(.top,5)
             
             HStack {
                 Text("Occupied")
+                    .padding(.bottom,25)
                 Spacer()
                 Text("110")
                     .foregroundColor(.red)
+                    .bold()
+                    .padding(.bottom,25)
             }
             .padding(.top,5)
             
             HStack {
                 Text("Capacity")
+                    .padding(.bottom,25)
                 Spacer()
                 Text("150")
+                    .bold()
                     .foregroundColor(.primaryBlue)
+                    .padding(.bottom,25)
             }
             .padding(.top,5)
             
-            Button (action : {
-                
-            }) {
-                HStack{
-                    Image(systemName: "location.fill")
-                    Text("Tap here to get directions")
-                }
-                .padding()
-                .background(Color.primaryBlue.opacity(0.2))
-                .cornerRadius(8)
-            }
-            padding(.top, 10)
+            
+           
+            
+            
             
             
         }
@@ -149,6 +174,20 @@ struct LiveView : View {
         .cornerRadius(10)
         .shadow(radius: 5)
         .padding()
+        
+        Button (action : {
+            
+        }) {
+            HStack{
+                Image(systemName: "location.fill")
+                Text("Tap here to get directions")
+            }
+            .padding()
+            .background(Color.primaryBlue.opacity(0.2))
+            .cornerRadius(8)
+            
+        }
+        
     }
 }
 #Preview{

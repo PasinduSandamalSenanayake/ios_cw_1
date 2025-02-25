@@ -16,6 +16,7 @@ import SwiftUI
 struct QRView: View {
     @State private var showQRCode: Bool = false
     @State private var showPopup : Bool = false
+    @State private var isDissmiss = false
     
     var body: some View {
         
@@ -107,6 +108,9 @@ struct QRView: View {
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
+                       
+                        
+                        
                         Button(action: {
                             showPopup = false
                         }) {
