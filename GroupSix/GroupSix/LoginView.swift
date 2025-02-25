@@ -1,90 +1,137 @@
-//
-//  LoginView.swift
-//  GroupSix
-//
-//  Created by Sandamal 014 on 2025-02-18.
-//
 import SwiftUI
 
 struct LoginView: View {
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var isGuestModeActive = false
+    @State private var isAccountCreationActive = false
+    @State private var isUserActive = false
+    
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            
-            // Logo
-            Image("logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300, height: 170)
-                
-            // Username and Password Fields
-            TextField("Enter Username", text: .constant(""))
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
+        NavigationStack {
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 0)
+                        .foregroundColor(Color.primaryBlue)
+                        .rotationEffect(Angle(degrees: 15))
+
+                    VStack {
+                        Text("Navigator")
+                            .font(.system(size: 36))
+                            .foregroundColor(Color.white)
+                            .bold()
+
+                        Text("Start to navigate")
+                            .font(.system(size: 24))
+                            .foregroundColor(Color.white)
+                    }
+                    .padding(.top, 30)
+                }
+                .frame(width: UIScreen.main.bounds.width * 3, height: 300)
+                .offset(y: -100)
+
+                Spacer().frame(height: 30)
+
+                // Username Field
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.gray, lineWidth: 1)
+                        .frame(height: 50)
+
+                    TextField("Enter Username", text: $username)
+                        .padding(.horizontal, 15)
+                        .font(.system(size: 18))
+                }
                 .padding(.horizontal)
-            
-            SecureField("Enter Password", text: .constant(""))
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
+
+                // Password Field
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.gray, lineWidth: 1)
+                        .frame(height: 50)
+
+                    SecureField("Enter Password", text: $password)
+                        .padding(.horizontal, 15)
+                        .font(.system(size: 18))
+                }
                 .padding(.horizontal)
-            
-            // Login Button
-            Button(action: {
-                print("Login tapped")
-            }) {
-                Text("LOGIN")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(8)
-                    .padding(.horizontal)
+                .padding(.bottom, 20)
+
+                // Sign In Button
+                Button(action: {
+                    isUserActive = true
+                }) {
+                    Text("SIGN IN")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.primaryBlue)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .fontWeight(.bold)
+                }
+                .padding(.horizontal)
+
+                // OR Separator
+                HStack {
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.gray)
+                    Text("OR")
+                        .foregroundColor(.gray)
+                        .fontWeight(.bold)
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal)
+
+                // Guest Mode Button
+                Button(action: {
+                    isGuestModeActive = true
+                }) {
+                    Text("GUEST MODE")
+                        .foregroundColor(Color.primaryBlue)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 25)
+                                .stroke(Color.primaryBlue, lineWidth: 2)
+                        )
+                }
+                .padding(.horizontal)
+
+                Spacer()
+
+                // Create Account Section
+                VStack(alignment: .center) {
+                    Text("New around here?")
+                    
+                    Button(action: {
+                        isAccountCreationActive = true
+                    }) {
+                        Text("Create An Account")
+                            .foregroundColor(Color.primaryBlue)
+                            .underline()
+                    }
+                }
+                .padding(.bottom)
+                .navigationBarBackButtonHidden(true)
             }
-            
-            // OR separator
-            HStack {
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal)
-                
-                Text("OR")
-                    .foregroundColor(.gray)
-                
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal)
+            // New Navigation Destination Handling (iOS 16+)
+            .navigationDestination(isPresented: $isGuestModeActive) {
+                HomeBody()
             }
-            
-            // Guest Mode Button
-            Button(action: {
-                print("Guest Mode tapped")
-            }) {
-                Text("GUEST MODE")
-                    .font(.headline)
-                    .foregroundColor(.blue)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.blue, lineWidth: 2)
-                    )
-                    .padding(.horizontal)
+            .navigationDestination(isPresented: $isAccountCreationActive) {
+                RegisterView()
             }
-            
-            Spacer()
+            .navigationDestination(isPresented: $isUserActive){
+                HomeView()
+            }
         }
-        .padding()
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
 
+#Preview {
+    LoginView()
+}

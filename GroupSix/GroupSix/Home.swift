@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab = 0  // Keeps track of selected tab
+    @State private var selectedTab = 0
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -14,7 +14,7 @@ struct HomeView: View {
             QRView()
                 .tag(2)
             
-            ProfileView()
+            profileView()
                 .tag(3)
         }
         .overlay(
@@ -27,27 +27,26 @@ struct HomeView: View {
     }
 }
 
-// ✅ Custom Bottom Navigation Bar
 struct CustomNavBar: View {
     @Binding var selectedTab: Int
 
     var body: some View {
         HStack {
-            NavBarItem(icon: "location.fill", title: "Home", tab: 0, selectedTab: $selectedTab)
+            NavBarItem(icon: "location.fill", title: "Navigate", tab: 0, selectedTab: $selectedTab)
             Spacer()
-            NavBarItem(icon: "clock", title: "Time", tab: 1, selectedTab: $selectedTab)
+            NavBarItem(icon: "clock", title: "Live Udates", tab: 1, selectedTab: $selectedTab)
             Spacer()
-            NavBarItem(icon: "bell.fill", title: "Alerts", tab: 2, selectedTab: $selectedTab)
+            NavBarItem(icon: "qrcode", title: "QR Code", tab: 2, selectedTab: $selectedTab)
             Spacer()
             NavBarItem(icon: "person.fill", title: "Profile", tab: 3, selectedTab: $selectedTab)
         }
         .frame(height: 70)
         .padding(.horizontal, 30)
         .background(Color.white.shadow(radius: 5))
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-// ✅ Navigation Bar Item Component
 struct NavBarItem: View {
     let icon: String
     let title: String
@@ -69,22 +68,8 @@ struct NavBarItem: View {
     }
 }
 
-// ✅ LogView (The Home Screen)
-struct LogView: View {
-    var body: some View {
-        NavigationView {
-            VStack {
-                Text("🏠 Welcome to LogView!")
-                    .font(.largeTitle)
-                    .bold()
-                Spacer()
-            }
-            .navigationTitle("Home")
-        }
-    }
-}
 
-// ✅ Dummy Screens for Other Tabs
+
 struct SearchView: View {
     var body: some View {
         VStack {
@@ -109,19 +94,7 @@ struct NotificationsView: View {
     }
 }
 
-struct ProfileView: View {
-    var body: some View {
-        VStack {
-            Text("👤 Profile View")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
-        }
-        .navigationTitle("Profile")
-    }
-}
 
-// ✅ Preview
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
