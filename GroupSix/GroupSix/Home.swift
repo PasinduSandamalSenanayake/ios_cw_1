@@ -32,11 +32,11 @@ struct CustomNavBar: View {
 
     var body: some View {
         HStack {
-            NavBarItem(icon: "location.fill", title: "Home", tab: 0, selectedTab: $selectedTab)
+            NavBarItem(icon: "location.fill", title: "Navigate", tab: 0, selectedTab: $selectedTab)
             Spacer()
             NavBarItem(icon: "clock", title: "Live Udates", tab: 1, selectedTab: $selectedTab)
             Spacer()
-            NavBarItem(icon: "bell.fill", title: "Alerts", tab: 2, selectedTab: $selectedTab)
+            NavBarItem(icon: "qrcode", title: "QR Code", tab: 2, selectedTab: $selectedTab)
             Spacer()
             NavBarItem(icon: "person.fill", title: "Profile", tab: 3, selectedTab: $selectedTab)
         }

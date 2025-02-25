@@ -7,24 +7,17 @@ struct CoinsView: View {
         VStack(alignment: .leading) {
             // Navigation bar
             HStack {
-                Button(action: {
-                    // Action for back button
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.title2)
-                        .foregroundColor(.black)
-                }
-                Spacer()
                 Text("Coins")
-                    .font(.title2)
+                    .font(.title)
                     .fontWeight(.bold)
-                Spacer()
+                Spacer() // This spacer will center the "Coins" text by taking up space on both sides
                 Text("\(userCoins) coins")
                     .fontWeight(.bold)
                     .foregroundColor(.yellow)
             }
             .padding()
             .background(Color(UIColor.systemGray6))
+
             
             // Product card
             HStack {
@@ -155,6 +148,7 @@ struct CoinsView: View {
             .cornerRadius(15)
             .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 2)
             .padding(.horizontal)
+            .navigationBarBackButtonHidden(true)
 
 
             

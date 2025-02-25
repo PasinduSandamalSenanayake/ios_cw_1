@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeBody: View {
     @State private var selectedFaculty = "Select the faculty"
     @State private var selectedLocation = "Select the location"
+    @State private var isNavigating = false
 
     let faculties = ["Engineering", "Science", "Business", "Medicine"]
     let locations = ["Main Campus", "City Campus", "North Wing", "South Block"]
@@ -16,199 +17,203 @@ struct HomeBody: View {
         ]
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                HStack {
-                    Circle()
-                        .fill(Color.blue)
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Image("user")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                        )
-
-                    VStack(alignment: .leading) {
-                        Text("Good morning")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                        Text("John Andrew")
-                            .fontWeight(.bold)
-                    }
-
-                    Spacer()
-                    
-                    Image(systemName: "bell.fill")
-                        .foregroundColor(.blue)
-                        .font(.title2)
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(15)
-                .shadow(radius: 5)
-                .padding(.horizontal)
-
-
-                
-                Menu {
-                    ForEach(faculties, id: \.self) { faculty in
-                        Button(faculty) {
-                            selectedFaculty = faculty
-                        }
-                    }
-                } label: {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 10) {
                     HStack {
-                        Text(selectedFaculty)
-                            .foregroundColor(.black)
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 40, height: 40)
+                            .overlay(
+                                Image("user")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                            )
+
+                        VStack(alignment: .leading) {
+                            Text("Good morning")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                            Text("John Andrew")
+                                .fontWeight(.bold)
+                        }
+
                         Spacer()
-                        Image(systemName: "chevron.down")
-                            .foregroundColor(.gray)
+                        
+                        NavigationLink(destination: CoinsView()) {
+                            Text("38 coins")
+                                .foregroundColor(Color.primaryBlue)
+                                .font(.title2)
+                        }
+
+
                     }
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 1)
-                }
-                .padding(.horizontal)
-
-                
-                Menu {
-                    ForEach(locations, id: \.self) { location in
-                        Button(location) {
-                            selectedLocation = location
-                        }
-                    }
-                } label: {
-                    HStack {
-                        Text(selectedLocation)
-                            .foregroundColor(.black)
-                        Spacer()
-                        Image(systemName: "chevron.down")
-                            .foregroundColor(.gray)
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 1)
-                }
-                .padding(.horizontal)
-
-                
-                Button(action: {
-                    print("Search tapped")
-                }) {
-                    Text("Search")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.primaryBlue)
-                        .cornerRadius(20)
-                }
-                .padding(.horizontal)
-                .padding(.bottom, 20)
-
-                
-                Image("map")
-                    .resizable()
-                    .aspectRatio(10/9, contentMode: .fit)
-                    .cornerRadius(10)
+                    .cornerRadius(15)
                     .shadow(radius: 5)
                     .padding(.horizontal)
 
-                
-                HStack {
-                    Image(systemName: "mappin.and.ellipse")
-                        .foregroundColor(.blue)
-                        .font(.subheadline)
-                    Text("Google Map")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .center)
-                
-                VStack(spacing: 5) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.white)
-                            .shadow(radius: 5)
-                            .frame(height: 270)
-
-                        VStack {
-                            HStack(spacing: 10) {
-                                buildingView(number: "2")
-                                buildingView(number: "3")
-                                buildingView(number: "4")
-                            }
-                            HStack(spacing: 10) {
-                                buildingView(number: "1", height: 100)
-                                Spacer()
-                                buildingView(number: "5", height: 100)
-                            }
-                            HStack {
-                                Spacer()
-                                buildingView(number: "", width: 50, height: 50) // Small block
+                    // Faculty menu
+                    Menu {
+                        ForEach(faculties, id: \.self) { faculty in
+                            Button(faculty) {
+                                selectedFaculty = faculty
                             }
                         }
+                    } label: {
+                        HStack {
+                            Text(selectedFaculty)
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .foregroundColor(.gray)
+                        }
                         .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
                     }
                     .padding(.horizontal)
 
-                    
-                    HStack {
-                        Image(systemName: "mappin.circle.fill")
-                            .foregroundColor(.blue)
-                            .font(.title2)
-                        Text("University Map")
-                            .font(.headline)
-                            .foregroundColor(.black)
+                    // Location menu
+                    Menu {
+                        ForEach(locations, id: \.self) { location in
+                            Button(location) {
+                                selectedLocation = location
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text(selectedLocation)
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
                     }
-                    .padding(.top, 5)
-                }
-                .padding()
-                .background(Color(UIColor.systemBlue).opacity(0.2))
-                .cornerRadius(15)
-                .padding()
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Map Description")
-                        .font(.headline)
-                        
+                    .padding(.horizontal)
+
+                    // Search button
+                    Button(action: {
+                        isNavigating = true
+                    }) {
+                        Text("Search")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.primaryBlue)
+                            .cornerRadius(20)
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 20)
+                    
+                    // Navigation to Navigate1View
+                    NavigationLink(isActive: $isNavigating) {
+                        Navigate1View()
+                    } label: {
+                        EmptyView()
+                    }
+
+                    Image("map")
+                        .resizable()
+                        .aspectRatio(10/9, contentMode: .fit)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        .padding(.horizontal)
+
+                    HStack {
+                        Image(systemName: "mappin.and.ellipse")
+                            .foregroundColor(.blue)
+                            .font(.subheadline)
+                        Text("Google Map")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
+
+                    // University map section
+                    VStack(spacing: 5) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color.white)
+                                .shadow(radius: 5)
+                                .frame(height: 270)
+
+                            VStack {
+                                HStack(spacing: 10) {
+                                    buildingView(number: "2")
+                                    buildingView(number: "3")
+                                    buildingView(number: "4")
+                                }
+                                HStack(spacing: 10) {
+                                    buildingView(number: "1", height: 100)
+                                    Spacer()
+                                    buildingView(number: "5", height: 100)
+                                }
+                                HStack {
+                                    Spacer()
+                                    buildingView(number: "", width: 50, height: 50) // Small block
+                                }
+                            }
+                            .padding()
+                        }
+                        .padding(.horizontal)
+
+                        HStack {
+                            Image(systemName: "mappin.circle.fill")
+                                .foregroundColor(.blue)
+                                .font(.title2)
+                            Text("University Map")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                        }
+                        .padding(.top, 5)
+                    }
+                    .padding()
+                    .background(Color(UIColor.systemBlue).opacity(0.2))
+                    .cornerRadius(15)
+                    .padding()
 
                     VStack(alignment: .leading, spacing: 8) {
-                        ForEach(0..<list_of_faculties.count, id: \.self) { index in
-                            Text("\(index + 1). \(list_of_faculties[index])")
-                                .font(.body)
+                        Text("Map Description")
+                            .font(.headline)
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(0..<list_of_faculties.count, id: \.self) { index in
+                                Text("\(index + 1). \(list_of_faculties[index])")
+                                    .font(.body)
+                            }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding(.horizontal)
+                    .padding(.horizontal)
 
-                               
-                Divider()
-                               
-                            
-                Text("About the University")
-                    .font(.headline)
-                               
-                Text("""
-                National Institute of Business Management (NIBM) is the premier Business School in Sri Lanka. We keep abreast of global trends and constantly upgrade our products to suit today’s needs. Over the years we have developed our identity while proving to be a leader in management training and education. We have empowered thousands to carve better futures for themselves.
-                """)
-                .font(.body)
-                .foregroundColor(.gray)
+                    Divider()
+
+                    Text("About the University")
+                        .font(.headline)
+
+                    Text("""
+                    National Institute of Business Management (NIBM) is the premier Business School in Sri Lanka. We keep abreast of global trends and constantly upgrade our products to suit today’s needs. Over the years we have developed our identity while proving to be a leader in management training and education. We have empowered thousands to carve better futures for themselves.
+                    """)
+                    .font(.body)
+                    .foregroundColor(.gray)
+                    .padding()
+                }
                 .padding()
-                
-                
-                
-                
             }
-            .padding()
+            .background(Color.lightGray)
+            .navigationBarBackButtonHidden(true)
+            
         }
-        .background(Color.lightGray)
     }
 
     func buildingView(number: String, width: CGFloat = 80, height: CGFloat = 80) -> some View {

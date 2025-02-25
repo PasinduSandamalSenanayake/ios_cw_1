@@ -2,91 +2,77 @@ import SwiftUI
 
 struct Navigate2View: View {
     @State private var step1Completed = true
-    @State private var step2Completed = true  
+    @State private var step2Completed = true
     @State private var step3Completed = false
     @State private var step4Completed = false
+    @State private var isNavigating = false  // State variable to control navigation
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Button(action: {
-                    print("Back button tapped")
-                }) {
-                    Image(systemName: "chevron.left")
+        NavigationStack {  // Use NavigationStack for iOS 16 and later
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Spacer()
+                    
+                    Text("Navigation")
+                        .font(.system(size: 28, weight: .bold))
                         .foregroundColor(.black)
-                        .font(.system(size: 20, weight: .medium))
+                    
+                    Spacer()
                 }
                 
-                Spacer()
+                Text("Description")
+                    .font(.system(size: 22, weight: .medium))
                 
-                Text("Navigation")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(.black)
+                Text("Could you please head towards the Faculty of Science and look for the elevator or staircase? Once you reach the 3rd floor, kindly make your way to Hall 44.")
+                    .font(.system(size: 16, weight: .regular))
                 
-                Spacer()
-            }
-            
-            Text("Description")
-                .font(.system(size: 22, weight: .medium))
-            
-            Text("Could you please head towards the Faculty of Science and look for the elevator or staircase? Once you reach the 3rd floor, kindly make your way to Hall 44.")
-                .font(.system(size: 16, weight: .regular))
-            
-            VStack(alignment: .leading, spacing: 8) {
-                stepItem(text: "Heading to the Faculty of Science", completed: step1Completed)
-                stepItem(text: "Look for the elevator or staircase", completed: step2Completed)
-                stepItem(text: "Go to the 3rd floor", completed: step3Completed)
-                stepItem(text: "Find Hall 44", completed: step4Completed)
-            }
-            .padding()
-            
-            
-            Image("map2")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 310)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .frame(maxWidth: .infinity, alignment: .center)
-            
+                VStack(alignment: .leading, spacing: 8) {
+                    stepItem(text: "Heading to the Faculty of Science", completed: step1Completed)
+                    stepItem(text: "Look for the elevator or staircase", completed: step2Completed)
+                    stepItem(text: "Go to the 3rd floor", completed: step3Completed)
+                    stepItem(text: "Find Hall 44", completed: step4Completed)
+                }
+                .padding()
+                
+                Image("map2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 310)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                HStack(spacing: 20) {
+                    legendItem(color: .red, text: "Path to elevator")
+                    legendItem(color: .green, text: "Path to staircase")
+                }
+                .padding()
 
-            HStack(spacing: 20) {
-                legendItem(color: .red, text: "Path to elevator")
-                legendItem(color: .green, text: "Path to staircase")
+                // Navigation destination to Navigate3View
+                .navigationDestination(isPresented: $isNavigating) {
+                    Navigate3View()  // Replace with your actual next view
+                }
+
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        print("Next button tapped")
+                        isNavigating = true // Trigger navigation to Navigate3View
+                    }) {
+                        HStack {
+                            Text("Next")
+                            Image(systemName: "chevron.right")
+                        }
+                        .font(.system(size: 18, weight: .medium))
+                        .foregroundColor(.blue)
+                        .padding()
+                    }
+                }
             }
             .padding()
-            
-            HStack {
-                Button(action: {
-                    print("Back button tapped")
-                }) {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                        Text("Back")
-                    }
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundColor(.blue)
-                    .padding()
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    print("Next button tapped")
-                }) {
-                    HStack {
-                        Text("Next")
-                        Image(systemName: "chevron.right")
-                    }
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundColor(.blue)
-                    .padding()
-                }
-            }
         }
-        .padding()
     }
 
-    
     func stepItem(text: String, completed: Bool) -> some View {
         HStack {
             Image(systemName: completed ? "checkmark.circle.fill" : "circle")
@@ -106,7 +92,6 @@ struct Navigate2View: View {
         }
     }
 }
-
 
 struct Navigate2View_Previews: PreviewProvider {
     static var previews: some View {
