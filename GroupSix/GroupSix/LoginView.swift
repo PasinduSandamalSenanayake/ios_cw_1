@@ -115,6 +115,7 @@ struct LoginView: View {
                     }
                 }
                 .padding(.bottom)
+                .navigationBarBackButtonHidden(true)
             }
             // New Navigation Destination Handling (iOS 16+)
             .navigationDestination(isPresented: $isGuestModeActive) {

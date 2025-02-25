@@ -14,7 +14,7 @@ struct HomeView: View {
             NotificationsView()
                 .tag(2)
             
-            ProfileView()
+            profileView()
                 .tag(3)
         }
         .overlay(
@@ -68,19 +68,7 @@ struct NavBarItem: View {
     }
 }
 
-struct LogView: View {
-    var body: some View {
-        NavigationView {
-            VStack {
-                Text("🏠 Welcome to LogView!")
-                    .font(.largeTitle)
-                    .bold()
-                Spacer()
-            }
-            .navigationTitle("Home")
-        }
-    }
-}
+
 
 struct SearchView: View {
     var body: some View {
@@ -103,18 +91,6 @@ struct NotificationsView: View {
             Spacer()
         }
         .navigationTitle("Notifications")
-    }
-}
-
-struct ProfileView: View {
-    var body: some View {
-        VStack {
-            Text("👤 Profile View")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
-        }
-        .navigationTitle("Profile")
     }
 }
 
