@@ -5,10 +5,10 @@ struct Navigate2View: View {
     @State private var step2Completed = true
     @State private var step3Completed = false
     @State private var step4Completed = false
-    @State private var isNavigating = false  // State variable to control navigation
+    @State private var isNavigating = false
 
     var body: some View {
-        NavigationStack {  // Use NavigationStack for iOS 16 and later
+        NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     Spacer()
@@ -34,7 +34,7 @@ struct Navigate2View: View {
                 }
                 .padding()
                 
-                Image("map2")
+                Image("map2_new")
                     .resizable()
                     .scaledToFit()
                     .frame(height: 310)
@@ -47,9 +47,9 @@ struct Navigate2View: View {
                 }
                 .padding()
 
-                // Navigation destination to Navigate3View
+                
                 .navigationDestination(isPresented: $isNavigating) {
-                    Navigate3View()  // Replace with your actual next view
+                    Navigate3View()
                 }
 
                 HStack {
@@ -57,7 +57,7 @@ struct Navigate2View: View {
                     
                     Button(action: {
                         print("Next button tapped")
-                        isNavigating = true // Trigger navigation to Navigate3View
+                        isNavigating = true 
                     }) {
                         HStack {
                             Text("Next")

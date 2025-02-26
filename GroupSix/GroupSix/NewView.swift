@@ -52,7 +52,7 @@ struct NewView : View {
                 .background(Color.primaryBlue.opacity(0.2))
                 .cornerRadius(8)
             }
-            padding(.top, 10)
+            .padding(.top, 10)
             
             
         }

@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct BackButton: View {
-    @Environment(\.dismiss) var dismiss  // Allows going back to the previous screen
+    @Environment(\.dismiss) var dismiss  
 
     var body: some View {
         Button(action: {
-            dismiss()  // Go back to Navigate1View
+            dismiss()
         }) {
             HStack {
                 Image(systemName: "chevron.left")

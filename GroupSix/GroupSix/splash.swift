@@ -22,7 +22,7 @@ struct SplashView: View {
                 }
             }
             .navigationDestination(isPresented: $isActive) {
-                IntroView() // Ensure LoginView exists in your project
+                IntroView() 
             }
         }
     }

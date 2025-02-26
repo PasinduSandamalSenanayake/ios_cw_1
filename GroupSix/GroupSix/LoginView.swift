@@ -32,7 +32,7 @@ struct LoginView: View {
 
                 Spacer().frame(height: 30)
 
-                // Username Field
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.gray, lineWidth: 1)
@@ -44,7 +44,7 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
 
-                // Password Field
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.gray, lineWidth: 1)
@@ -55,9 +55,19 @@ struct LoginView: View {
                         .font(.system(size: 18))
                 }
                 .padding(.horizontal)
-                .padding(.bottom, 20)
+                .padding(.bottom, 10)
 
-                // Sign In Button
+                HStack{
+                    Spacer()
+                    Text("Forgot password?")
+                        .foregroundColor(Color.primaryBlue)
+                        .fontWeight(.bold)
+                        
+                }
+                .padding(.bottom, 20)
+                .padding(.horizontal)
+                
+                
                 Button(action: {
                     isUserActive = true
                 }) {
@@ -71,7 +81,6 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
 
-                // OR Separator
                 HStack {
                     Rectangle()
                         .frame(height: 1)
@@ -85,7 +94,6 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
 
-                // Guest Mode Button
                 Button(action: {
                     isGuestModeActive = true
                 }) {
@@ -102,7 +110,6 @@ struct LoginView: View {
 
                 Spacer()
 
-                // Create Account Section
                 VStack(alignment: .center) {
                     Text("New around here?")
                     
@@ -117,7 +124,7 @@ struct LoginView: View {
                 .padding(.bottom)
                 .navigationBarBackButtonHidden(true)
             }
-            // New Navigation Destination Handling (iOS 16+)
+            
             .navigationDestination(isPresented: $isGuestModeActive) {
                 HomeBody()
             }

@@ -3,7 +3,7 @@ import SwiftUI
 struct QRView: View {
     @State private var showQRCode: Bool = false
     @State private var showPopup: Bool = false
-    @State private var isDismiss: Bool = false // Track navigation
+    @State private var isDismiss: Bool = false 
 
     var body: some View {
         NavigationStack {

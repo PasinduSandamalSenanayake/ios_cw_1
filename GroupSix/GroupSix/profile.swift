@@ -1,22 +1,16 @@
-//
-//  profile.swift
-//  GroupSix
-//
-//  Created by Sheshami 029 on 2025-02-25.
-//
+
 import SwiftUI
 
 struct profileView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // Top Half (Blue Background with Image)
             VStack {
                 Spacer()
                 Image("user")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 400, height: 200) // Make width and height equal for a perfect circle
-                    .clipShape(Circle()) // Clip the image into a circle
+                    .frame(width: 400, height: 200)
+                    .clipShape(Circle())
                     
                 Text("John Andrew")
                     .font(.headline)
@@ -31,10 +25,10 @@ struct profileView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity)
-            .frame(height: UIScreen.main.bounds.height * 0.45) // Adjusted height
+            .frame(height: UIScreen.main.bounds.height * 0.45)
             .background(Color.primaryBlue)
             
-            // Bottom Half (White Background with Rounded Corners)
+            
             VStack(alignment: .leading, spacing: 1) {
                 HStack{
                     Image(systemName: "person.fill")
@@ -118,7 +112,7 @@ struct profileView: View {
             .padding()
             .frame(height: UIScreen.main.bounds.height * 0.555)
             .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous)) // Add corner radius
+            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous)) 
             .shadow(radius: 5)
         }
         .edgesIgnoringSafeArea(.all)

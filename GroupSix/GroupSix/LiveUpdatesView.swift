@@ -116,7 +116,6 @@ struct LiveView: View {
         .shadow(radius: 5)
         .padding()
 
-        // NavigationLink for button
         NavigationLink(destination: Navigate1View()) {
             HStack {
                 Image(systemName: "location.fill")

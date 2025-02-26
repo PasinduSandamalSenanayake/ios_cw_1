@@ -5,10 +5,10 @@ struct Navigate3View: View {
     @State private var step2Completed = true
     @State private var step3Completed = true
     @State private var step4Completed = true
-    @State private var isNavigating = false  // State variable to control navigation
+    @State private var isNavigating = false
 
     var body: some View {
-        NavigationStack {  // Use NavigationStack for iOS 16 and later
+        NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     Spacer()
@@ -34,7 +34,7 @@ struct Navigate3View: View {
                 }
                 .padding()
                 
-                Image("map3")
+                Image("map3_new")
                     .resizable()
                     .scaledToFit()
                     .frame(height: 310)
@@ -48,9 +48,9 @@ struct Navigate3View: View {
                 }
                 .padding()
                 
-                // Navigation destination to HomeBody
+                
                 .navigationDestination(isPresented: $isNavigating) {
-                    HomeBody()  // Navigate to HomeBody when "Done" is pressed
+                    HomeBody()
                 }
 
                 HStack {
@@ -58,7 +58,7 @@ struct Navigate3View: View {
                     
                     Button(action: {
                         print("Done button tapped")
-                        isNavigating = true  // Trigger navigation to HomeBody
+                        isNavigating = true  
                     }) {
                         HStack {
                             Text("Done")

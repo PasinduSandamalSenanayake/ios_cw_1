@@ -150,7 +150,7 @@ struct HomeBody: View {
                             }
                             HStack {
                                 Spacer()
-                                buildingView(number: "", width: 50, height: 50) // Small block
+                                buildingView(number: "", width: 50, height: 50) 
                             }
                         }
                         .padding()

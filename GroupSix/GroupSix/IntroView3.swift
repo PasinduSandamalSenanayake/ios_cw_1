@@ -12,7 +12,6 @@ struct IntroView3: View {
     var body: some View {
         NavigationStack{
             VStack(spacing: 0) {
-                // Top Half (Blue Background with Image)
                 VStack {
                     Spacer()
                     Image("coin")
@@ -22,10 +21,10 @@ struct IntroView3: View {
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: UIScreen.main.bounds.height * 0.45) // Adjusted height
+                .frame(height: UIScreen.main.bounds.height * 0.45)
                 .background(Color.primaryBlue)
                 
-                // Bottom Half (White Background with Rounded Corners)
+               
                 VStack(alignment: .leading, spacing: 15) {
                     Text("💰Earn & Redeem Coins")
                         .font(.headline)
@@ -68,7 +67,7 @@ struct IntroView3: View {
                 .padding()
                 .frame(height: UIScreen.main.bounds.height * 0.55)
                 .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous)) // Add corner radius
+                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous)) 
                 .shadow(radius: 5)
             }
             .edgesIgnoringSafeArea(.all)

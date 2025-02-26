@@ -83,7 +83,7 @@ struct IntroView: View {
                 .padding()
                 .frame(height: UIScreen.main.bounds.height * 0.55)
                 .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous)) // Add corner radius
+                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous)) 
                 .shadow(radius: 5)
             }
             .edgesIgnoringSafeArea(.all)

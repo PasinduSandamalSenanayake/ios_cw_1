@@ -70,29 +70,29 @@ struct NavBarItem: View {
 
 
 
-struct SearchView: View {
-    var body: some View {
-        VStack {
-            Text("🔍 Search View")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
-        }
-        .navigationTitle("Search")
-    }
-}
-
-struct NotificationsView: View {
-    var body: some View {
-        VStack {
-            Text("🔔 Notifications View")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
-        }
-        .navigationTitle("Notifications")
-    }
-}
+//struct SearchView: View {
+//    var body: some View {
+//        VStack {
+//            Text("🔍 Search View")
+//                .font(.largeTitle)
+//                .bold()
+//            Spacer()
+//        }
+//        .navigationTitle("Search")
+//    }
+//}
+//
+//struct NotificationsView: View {
+//    var body: some View {
+//        VStack {
+//            Text("🔔 Notifications View")
+//                .font(.largeTitle)
+//                .bold()
+//            Spacer()
+//        }
+//        .navigationTitle("Notifications")
+//    }
+//}
 
 
 struct HomeView_Previews: PreviewProvider {
