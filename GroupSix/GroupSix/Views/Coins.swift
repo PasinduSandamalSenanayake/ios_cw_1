@@ -15,7 +15,7 @@ struct CoinsView: View {
                 Text("\(userCoins) coins")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.primaryBlue)
+                    .foregroundColor(Color.darkYellow)
             }
             .padding()
             .background(Color(UIColor.systemGray6))

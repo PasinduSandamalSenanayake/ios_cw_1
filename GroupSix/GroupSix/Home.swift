@@ -58,41 +58,15 @@ struct NavBarItem: View {
             VStack {
                 Image(systemName: icon)
                     .font(.system(size: 24))
-                    .foregroundColor(selectedTab == tab ? .blue : .gray)
+                    .foregroundColor(selectedTab == tab ? Color.primaryBlue : .gray)
                 Text(title)
                     .font(.caption)
-                    .foregroundColor(selectedTab == tab ? .blue : .gray)
+                    .foregroundColor(selectedTab == tab ? Color.primaryBlue : .gray)
             }
             .padding(.top, 10)
         }
     }
 }
-
-
-
-//struct SearchView: View {
-//    var body: some View {
-//        VStack {
-//            Text("🔍 Search View")
-//                .font(.largeTitle)
-//                .bold()
-//            Spacer()
-//        }
-//        .navigationTitle("Search")
-//    }
-//}
-//
-//struct NotificationsView: View {
-//    var body: some View {
-//        VStack {
-//            Text("🔔 Notifications View")
-//                .font(.largeTitle)
-//                .bold()
-//            Spacer()
-//        }
-//        .navigationTitle("Notifications")
-//    }
-//}
 
 
 struct HomeView_Previews: PreviewProvider {

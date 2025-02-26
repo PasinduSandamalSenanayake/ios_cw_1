@@ -50,7 +50,7 @@ struct Navigate3View: View {
                 
                 
                 .navigationDestination(isPresented: $isNavigating) {
-                    HomeBody()
+                    HomeView()
                 }
 
                 HStack {

@@ -27,7 +27,7 @@ struct UserProfileHeader: View {
 
             NavigationLink(destination: CoinsView()) {
                 Text("38 coins")
-                    .foregroundColor(Color.primaryBlue)
+                    .foregroundColor(Color.darkYellow)
                     .font(.title2)
             }
         }
@@ -39,4 +39,11 @@ struct UserProfileHeader: View {
     }
 }
 
-
+struct UserProfileHeader_Previews: PreviewProvider {
+    static var previews: some View {
+        UserProfileHeader()
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .previewDisplayName("User Profile Header") 
+    }
+}
