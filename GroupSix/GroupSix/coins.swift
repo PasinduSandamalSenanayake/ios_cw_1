@@ -13,7 +13,7 @@ struct CoinsView: View {
                 Spacer() // This spacer will center the "Coins" text by taking up space on both sides
                 Text("\(userCoins) coins")
                     .fontWeight(.bold)
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Color.primaryBlue)
             }
             .padding()
             .background(Color(UIColor.systemGray6))
