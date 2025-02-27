@@ -6,38 +6,61 @@ struct Navigate3View: View {
     @State private var step3Completed = true
     @State private var step4Completed = true
     @State private var isNavigating = false
+    @State private var navigateToHome = false
 
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Button(action: {
+                        navigateToHome = true
+                    }) {Image(systemName: "chevron.left")
+                        Text("    Back")
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.blue)
+//                            .padding()
+                            
+                            
+                    }
+                    .padding(.top,50)
+                }
+                 
+                        .navigationDestination(isPresented: $navigateToHome) {
+                                        HomeView()
+                                    }
                 HStack {
                     Spacer()
                     
                     Text("Navigation")
                         .font(.system(size: 28, weight: .bold))
                         .foregroundColor(.black)
+                        .padding(.top,30)
+                       
+                        
                     
                     Spacer()
                 }
                 
-                Text("Description")
+                Text("Steps to follow:")
                     .font(.system(size: 22, weight: .medium))
-                
-                Text("Could you please head towards the Faculty of Science and look for the elevator or staircase? Once you reach the 3rd floor, kindly make your way to Hall 44.")
-                    .font(.system(size: 16, weight: .regular))
+                    .padding(.top, 20)
+                   
+//
+//                Text("Could you please head towards the Faculty of Science and look for the elevator or staircase? Once you reach the 3rd floor, kindly make your way to Hall 44.")
+//                    .font(.system(size: 16, weight: .regular))
                 
                 VStack(alignment: .leading, spacing: 8) {
                     stepItem(text: "Heading to the Faculty of Science", completed: step1Completed)
                     stepItem(text: "Look for the elevator or staircase", completed: step2Completed)
                     stepItem(text: "Go to the 3rd floor", completed: step3Completed)
-                    stepItem(text: "Find Hall 44", completed: step4Completed)
+                    stepItem(text: "Head over to hall 44", completed: step4Completed)
                 }
                 .padding()
                 
-                Image("map3_new")
+                Image("map_4")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 310)
+                    .frame(height: 350)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .frame(maxWidth: .infinity, alignment: .center)
                 
@@ -46,7 +69,7 @@ struct Navigate3View: View {
                     legendItem(color: .green, text: "Staircase")
                     legendItem(color: .purple, text: "Hall 44")
                 }
-                .padding()
+        
                 
                 
                 .navigationDestination(isPresented: $isNavigating) {
@@ -90,6 +113,7 @@ struct Navigate3View: View {
             Text(text)
                 .font(.subheadline)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

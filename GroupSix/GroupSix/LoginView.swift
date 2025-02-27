@@ -126,7 +126,7 @@ struct LoginView: View {
             }
             
             .navigationDestination(isPresented: $isGuestModeActive) {
-                HomeBody()
+                GuestModeView()
             }
             .navigationDestination(isPresented: $isAccountCreationActive) {
                 RegisterView()

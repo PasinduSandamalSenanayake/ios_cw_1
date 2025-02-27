@@ -1,9 +1,16 @@
+//
+//  navigate2.5View.swift
+//  GroupSix
+//
+//  Created by Manula 048 on 2025-02-27.
+//
+
 import SwiftUI
 
-struct Navigate2View: View {
+struct Navigate2NewView: View {
     @State private var step1Completed = true
     @State private var step2Completed = true
-    @State private var step3Completed = false
+    @State private var step3Completed = true
     @State private var step4Completed = false
 //    @State private var isNavigating = false
     @State private var navigateToHome = false
@@ -39,7 +46,7 @@ struct Navigate2View: View {
                 
                 Text("Steps to follow:")
                     .font(.system(size: 22, weight: .medium))
-                
+                    
                 
 //                Text("Could you please head towards the Faculty of Science and look for the elevator or staircase? Once you reach the 3rd floor, kindly make your way to Hall 44.")
 //                    .font(.system(size: 16, weight: .regular))
@@ -51,8 +58,8 @@ struct Navigate2View: View {
                     stepItem(text: "Head over to hall 44", completed: step4Completed)
                 }
                 .padding()
-                NavigationLink(destination: Navigate2NewView()){
-                    Image("map2_new")
+                NavigationLink(destination: Navigate3View()){
+                    Image("map3_new")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 350)
@@ -61,8 +68,9 @@ struct Navigate2View: View {
                 }
                 
                 HStack(spacing: 20) {
-                    legendItem(color: .red, text: "Path to elevator")
-                    legendItem(color: .green, text: "Path to staircase")
+                    legendItem(color: .red, text: "elevator")
+                    legendItem(color: .green, text: "staircase")
+                    legendItem(color: .purple, text: "Hall 44")
                 }
                 .padding()
 
@@ -73,10 +81,10 @@ struct Navigate2View: View {
 //
 //                HStack {
 //                    Spacer()
-//                    
+//
 //                    Button(action: {
 //                        print("Next button tapped")
-//                        isNavigating = true 
+//                        isNavigating = true
 //                    }) {
 //                        HStack {
 //                            Text("Next")
@@ -113,8 +121,8 @@ struct Navigate2View: View {
     }
 }
 
-struct Navigate2View_Previews: PreviewProvider {
+struct Navigate2NewView_Previews: PreviewProvider {
     static var previews: some View {
-        Navigate2View()
+        Navigate2NewView()
     }
 }

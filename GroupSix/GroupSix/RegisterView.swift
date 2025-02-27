@@ -110,7 +110,7 @@ struct RegisterView: View {
 
 
                 
-                NavigationLink(destination: HomeView(), isActive: $isAccountCreated) {
+                NavigationLink(destination: LoginView(), isActive: $isAccountCreated) {
                     EmptyView()
                 }
 

@@ -81,7 +81,7 @@ struct QRView: View {
                 }
             )
             .navigationDestination(isPresented: $isDismiss) {
-                HomeView() 
+                HomeView()
             }
         }
     }
