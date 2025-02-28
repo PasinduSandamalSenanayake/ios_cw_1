@@ -30,7 +30,7 @@ struct RegisterView: View {
                         .font(.system(size: 24))
                         .foregroundColor(Color.white)
                     }
-                .padding(.top, 30)
+                .padding(.top, 70)
                 }
                 .frame(width: UIScreen.main.bounds.width * 3, height: 300)
                 .offset(y: -100)

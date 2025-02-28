@@ -18,27 +18,53 @@ struct Navigate2View: View {
                         Text("Back")
                             .font(.system(size: 18, weight: .medium))
                             .foregroundColor(.blue)
-                            .padding()
+//                            .padding()
                             
                     }
                 }
                  
-                        .navigationDestination(isPresented: $navigateToHome) {
-                                        HomeView()
-                                    }
+                .navigationDestination(isPresented: $navigateToHome) {
+                                HomeView()
+                }
                 HStack {
                     Spacer()
                     
                     Text("Navigation")
                         .font(.system(size: 28, weight: .bold))
                         .foregroundColor(.black)
-                        .padding()
+                        .padding(.horizontal)
                     
                     Spacer()
                 }
                 
                 Text("Steps to follow:")
                     .font(.system(size: 22, weight: .medium))
+                
+//                HStack {
+//                    Button(action: {
+//                        navigateToHome = true
+//                    }) {
+//                        Image(systemName: "chevron.left")
+//                            .foregroundColor(.black)
+//                            .font(.system(size: 20, weight: .medium))
+//                    }
+//
+//                    Spacer()
+//
+//                    Text("Navigation")
+//                        .font(.system(size: 28, weight: .bold))
+//
+//                    Spacer()
+//                }
+//                .navigationDestination(isPresented: $navigateToHome) {
+//                                HomeView()
+//                }
+//                
+//                HStack{
+//                    Text("Steps to follow:")
+//                        .font(.system(size: 22, weight: .medium))
+//                }
+//                .padding(.top)
                 
                 
 //                Text("Could you please head towards the Faculty of Science and look for the elevator or staircase? Once you reach the 3rd floor, kindly make your way to Hall 44.")
