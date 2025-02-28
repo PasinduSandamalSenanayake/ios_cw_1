@@ -13,13 +13,13 @@ struct LectureView: View {
     var body: some View {
         VStack(spacing: 16) {
             HStack {
-                Button(action: {
-                    navigateToHome = true
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
-                        .font(.system(size: 20, weight: .medium))
-                }
+//                Button(action: {
+//                    navigateToHome = true
+//                }) {
+//                    Image(systemName: "chevron.left")
+//                        .foregroundColor(.black)
+//                        .font(.system(size: 20, weight: .medium))
+//                }
 
                 Spacer()
 
@@ -110,7 +110,7 @@ struct LectureView: View {
             Spacer()
         }
         .padding(.top)
-        .navigationBarHidden(true)
+//        .navigationBarHidden(true)
         
         
     }

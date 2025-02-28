@@ -99,7 +99,7 @@ struct HomeBody: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.primaryBlue)
-                        .cornerRadius(20)
+                        .cornerRadius(15)
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 20)

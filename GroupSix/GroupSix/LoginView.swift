@@ -76,7 +76,7 @@ struct LoginView: View {
                         .padding()
                         .background(Color.primaryBlue)
                         .foregroundColor(.white)
-                        .cornerRadius(25)
+                        .cornerRadius(15)
                         .fontWeight(.bold)
                 }
                 .padding(.horizontal)
@@ -102,7 +102,7 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .overlay(
-                            RoundedRectangle(cornerRadius: 25)
+                            RoundedRectangle(cornerRadius: 15)
                                 .stroke(Color.primaryBlue, lineWidth: 2)
                         )
                 }

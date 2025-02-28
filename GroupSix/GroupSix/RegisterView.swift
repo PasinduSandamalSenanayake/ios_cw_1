@@ -123,7 +123,7 @@ struct RegisterView: View {
                         .padding()
                         .background(Color.primaryBlue)
                         .foregroundColor(.white)
-                        .cornerRadius(25)
+                        .cornerRadius(15)
                         .fontWeight(.bold)
                 }
                 .padding(.horizontal)
